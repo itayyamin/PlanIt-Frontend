@@ -8,7 +8,7 @@ import {
     ChevronDown
 } from 'lucide-react';
 import Tasks from './dashboard/Tasks';
-import Products from './dashboard/Products';
+import Items from './dashboard/Items';
 import Description from './dashboard/Description';
 import People from './dashboard/People';
 import { apiService } from '../services/api';
@@ -24,7 +24,7 @@ const DashboardLayout = () => {
         { id: 'description', label: 'Description', icon: <FileText className="w-4 h-4" /> },
         { id: 'people', label: 'People', icon: <Users className="w-4 h-4" /> },
         { id: 'tasks', label: 'Tasks', icon: <Folders className="w-4 h-4" /> },
-        { id: 'products', label: 'Products', icon: <Package className="w-4 h-4" /> },
+        { id: 'items', label: 'Items', icon: <Package className="w-4 h-4" /> },
     ];
 
     useEffect(() => {
@@ -131,8 +131,8 @@ const DashboardLayout = () => {
                             {activeTab === 'tasks' && (
                                 <Tasks projectId={selectedProject?.id} />
                             )}
-                            {activeTab === 'products' && (
-                                <Products projectId={selectedProject?.id} />
+                            {activeTab === 'items' && (
+                                <Items projectId={selectedProject?.id} />
                             )}
                             {activeTab === 'description' && (
                                 <Description

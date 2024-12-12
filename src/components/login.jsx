@@ -62,7 +62,7 @@ const Login = () => {
             <div className="max-w-md w-full space-y-8 p-8 bg-gray-900 rounded-xl shadow-2xl">
                 <div className="text-center">
                     <h2 className="text-3xl font-bold text-white mb-2 flex items-center justify-center gap-2">
-                        Welcome to Vuexy! 👋
+                        Welcome to PlanIt! 👋
                     </h2>
                     <p className="text-gray-400">
                         Please sign-in to your account and start the adventure
