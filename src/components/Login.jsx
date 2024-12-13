@@ -137,7 +137,7 @@ const Login = () => {
 
                     <p className="text-center text-sm text-gray-400">
                         New on our platform?{' '}
-                        <Link to="/register" className="text-violet-500 hover:text-violet-400">
+                        <Link to="/src/components/Register" className="text-violet-500 hover:text-violet-400">
                             Create an account
                         </Link>
                     </p>

@@ -163,7 +163,7 @@ const Register = () => {
 
                     <p className="text-center text-sm text-gray-400">
                         Already have an account?{' '}
-                        <Link to="/login" className="text-violet-500 hover:text-violet-400">
+                        <Link to="/src/components/Login" className="text-violet-500 hover:text-violet-400">
                             Sign in instead
                         </Link>
                     </p>
