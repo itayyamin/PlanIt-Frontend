@@ -1,5 +1,7 @@
 // src/services/api.js
-const API_URL = 'http://127.0.0.1:8000/api';
+
+const BASE_URL = import.meta.env.VITE_API_URL
+const URL = BASE_URL;
 
 const getAuthHeaders = () => {
     const token = localStorage.getItem('token');
@@ -13,7 +15,9 @@ export const apiService = {
     // Auth endpoints
     async login(credentials) {
         try {
-            const response = await fetch(`${API_URL}/auth/login`, {
+            console.log("URL: ",URL)
+            console.log("Import: ",BASE_URL)
+            const response = await fetch(`${URL}/auth/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(credentials),
@@ -38,7 +42,7 @@ export const apiService = {
                 throw new Error('No authentication token found');
             }
 
-            const response = await fetch(`${API_URL}/users/${userId}`, {
+            const response = await fetch(`${URL}/users/${userId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -66,7 +70,7 @@ export const apiService = {
                 throw new Error('No authentication token found');
             }
 
-            const response = await fetch(`${API_URL}/events/my-events`, {
+            const response = await fetch(`${URL}/events/my-events`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -95,7 +99,7 @@ export const apiService = {
                 throw new Error('No authentication token found');
             }
 
-            const response = await fetch(`${API_URL}/events/get-event-id/${eventId}`, {
+            const response = await fetch(`${URL}/events/get-event-id/${eventId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -121,7 +125,7 @@ export const apiService = {
 
     async register(userData) {
         try {
-            const response = await fetch(`${API_URL}/auth/register`, {
+            const response = await fetch(`${URL}/auth/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(userData),
@@ -141,7 +145,7 @@ export const apiService = {
 
     // Protected endpoints
     async getTasks() {
-        const response = await fetch(`${API_URL}/tasks`, {
+        const response = await fetch(`${URL}/tasks`, {
             headers: getAuthHeaders(),
         });
         if (!response.ok) throw new Error('Failed to fetch tasks');
@@ -149,7 +153,7 @@ export const apiService = {
     },
 
     async createTask(task) {
-        const response = await fetch(`${API_URL}/tasks`, {
+        const response = await fetch(`${URL}/tasks`, {
             method: 'POST',
             headers: getAuthHeaders(),
             body: JSON.stringify(task),
@@ -159,7 +163,7 @@ export const apiService = {
     },
 
     async updateTask(taskId, task) {
-        const response = await fetch(`${API_URL}/tasks/${taskId}`, {
+        const response = await fetch(`${URL}/tasks/${taskId}`, {
             method: 'PUT',
             headers: getAuthHeaders(),
             body: JSON.stringify(task),
@@ -169,7 +173,7 @@ export const apiService = {
     },
 
     async deleteTask(taskId) {
-        const response = await fetch(`${API_URL}/tasks/${taskId}`, {
+        const response = await fetch(`${URL}/tasks/${taskId}`, {
             method: 'DELETE',
             headers: getAuthHeaders(),
         });

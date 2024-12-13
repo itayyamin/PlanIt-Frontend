@@ -5,7 +5,6 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
 import DashboardLayout from './components/DashboardLayout';
-
 import { UserProvider } from './context/UserContext';
 
 function App() {

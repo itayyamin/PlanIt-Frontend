@@ -1,5 +1,7 @@
 // services/tasksApi.js
-const API_URL = 'http://127.0.0.1:8000/api/tasks';
+
+const BASE_URL = import.meta.env.VITE_API_URL
+const URL = BASE_URL+ '/tasks';
 
 const getAuthHeaders = () => {
     const token = localStorage.getItem('token');
@@ -11,7 +13,7 @@ const getAuthHeaders = () => {
 
 export const apiTaskService = {
     async createTask(eventId, task) {
-        const response = await fetch(`${API_URL}/events/${eventId}/tasks`, {
+        const response = await fetch(`${URL}/events/${eventId}/tasks`, {
             method: 'POST',
             headers: getAuthHeaders(),
             body: JSON.stringify(task),
@@ -24,7 +26,7 @@ export const apiTaskService = {
     },
 
     async getTasks(eventId) {
-        const response = await fetch(`${API_URL}/events/${eventId}/tasks`, {
+        const response = await fetch(`${URL}/events/${eventId}/tasks`, {
             headers: getAuthHeaders(),
         });
         if (!response.ok) {
@@ -35,7 +37,7 @@ export const apiTaskService = {
     },
 
     async updateTask(taskId, updates) {
-        const response = await fetch(`${API_URL}/tasks/${taskId}`, {
+        const response = await fetch(`${URL}/tasks/${taskId}`, {
             method: 'PUT',
             headers: getAuthHeaders(),
             body: JSON.stringify(updates),
@@ -48,7 +50,7 @@ export const apiTaskService = {
     },
 
     async deleteTask(taskId) {
-        const response = await fetch(`${API_URL}/tasks/${taskId}`, {
+        const response = await fetch(`${URL}/tasks/${taskId}`, {
             method: 'DELETE',
             headers: getAuthHeaders(),
         });

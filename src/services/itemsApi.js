@@ -1,5 +1,6 @@
 // services/itemsApi.js
-const API_URL = 'http://127.0.0.1:8000/api/items';
+const BASE_URL = import.meta.env.VITE_API_URL
+const URL = BASE_URL+ '/items';
 
 const getAuthHeaders = () => {
     const token = localStorage.getItem('token');
@@ -11,7 +12,7 @@ const getAuthHeaders = () => {
 
 export const apiItemService = {
     async createItem(eventId, item) {
-        const response = await fetch(`${API_URL}/events/${eventId}/items`, {
+        const response = await fetch(`${URL}/events/${eventId}/items`, {
             method: 'POST',
             headers: getAuthHeaders(),
             body: JSON.stringify(item),
@@ -24,7 +25,7 @@ export const apiItemService = {
     },
 
     async getItems(eventId) {
-        const response = await fetch(`${API_URL}/events/${eventId}/items`, {
+        const response = await fetch(`${URL}/events/${eventId}/items`, {
             headers: getAuthHeaders(),
         });
         if (!response.ok) {
@@ -35,7 +36,7 @@ export const apiItemService = {
     },
 
     async updateItem(itemId, updates) {
-        const response = await fetch(`${API_URL}/items/${itemId}`, {
+        const response = await fetch(`${URL}/items/${itemId}`, {
             method: 'PUT',
             headers: getAuthHeaders(),
             body: JSON.stringify(updates),
@@ -48,7 +49,7 @@ export const apiItemService = {
     },
 
     async deleteItem(itemId) {
-        const response = await fetch(`${API_URL}/items/${itemId}`, {
+        const response = await fetch(`${URL}/items/${itemId}`, {
             method: 'DELETE',
             headers: getAuthHeaders(),
         });
